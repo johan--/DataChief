@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
+    'weatherSentiment.apps.WeathersentimentConfig'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -76,11 +77,13 @@ WSGI_APPLICATION = 'DataChief.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'weather',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '/Applications/MAMP/tmp/mysql/mysql.sock'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
