@@ -3,7 +3,7 @@ alchemyapi = AlchemyAPI()
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy import StreamListener
-import time
+import time, urllib2,json
 
 ckey = 'UM2gbjeLUmEdDLNXYC7zoJiJo'
 csecret = 'u1AcVym5bUBfvwKnqnvUbdYO5R9JGwH5XX39pLztM02nBToQnO'
@@ -12,9 +12,11 @@ asecret = 'KG1nzAWotPLASC7pwp4rbcswUkEElMjoFYBXeKD21N65C'
 
 def sentimentAnalysis(text):
     response = alchemyapi.sentiment("text", text)
-    #print response
-    print response["docSentiment"]
-    return response["docSentiment"]
+
+    print response
+
+    #print int(response["docSentiment"]['score'])
+    return 1
 
 
 class listener(StreamListener):
@@ -26,6 +28,7 @@ class listener(StreamListener):
             tweet = data.split(',"text":')[1].split('","source')[0]
             print tweet
             Sentiment = sentimentAnalysis(tweet)
+
             #print sentiment
             #saveThis = str(time.time()) + '::' + tweet
             #saveFile = open('twitDB2.csv', 'a')

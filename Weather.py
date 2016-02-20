@@ -7,8 +7,6 @@ extension =  'geolookup/conditions/q/IA/Cedar_Rapids.json'
 url_full = url_base + extension
 
 
-import urllib2
-import json
 f = urllib2.urlopen(url_full)
 json_string = f.read()
 parsed_json = json.loads(json_string)
