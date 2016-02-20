@@ -6,6 +6,9 @@ from django.db import models
 class Location(models.Model):
     city_name = models.CharField(max_length=30)
     state_name = models.CharField(max_length=30)
+    zip = models.CharField(max_length=6)
+    lat = models.CharField(max_length=10)
+    lng = models.CharField(max_length=10)
 
 class Weather(models.Model):
     location = models.ForeignKey(Location, on_delete=models.DO_NOTHING)
