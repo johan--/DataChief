@@ -5,3 +5,4 @@ Django > 1.9
 
 #Support Libs
 tweepy == 3.5.0
+MySQL-python
