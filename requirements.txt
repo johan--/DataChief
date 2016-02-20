@@ -1,0 +1,7 @@
+# Install with: `pip install -r requirements.txt`
+
+# Infrastructure
+Django > 1.9
+
+#Support Libs
+tweepy == 3.5.0
