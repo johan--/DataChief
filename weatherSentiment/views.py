@@ -1,6 +1,11 @@
 from django.http import HttpResponse
-from Weather import WeatherManager
+from django.template import loader
+from weatherManager import WeatherManager
+from twitterManager import TwitterManager
 
 def index(request):
-    WeatherManager.weather_run()
-    return HttpResponse("Hello, world. You're at the polls index.")
+    # TwitterManager.start_stream([])
+    # WeatherManager.weather_run()
+    context = {}
+    template = loader.get_template('index.html')
+    return HttpResponse(template.render(context, request))

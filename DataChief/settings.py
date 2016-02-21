@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'weatherSentiment.apps.WeathersentimentConfig'
+    'weatherSentiment.apps.WeathersentimentConfig',
+    'dh5bp'
 ]
 
 MIDDLEWARE_CLASSES = [
