@@ -13,7 +13,18 @@ def index(request):
 
 def get_data(request):
     context = {}
-    weather_data = Weather.objects.all()
-    print weather_data
+    weathers = Weather.objects.all()
+    for weather in weathers:
+        print weather.wind
+        print weather.precipitation
+        print weather.temperature
+        print weather.weather
+        print weather.location_id
+        location = Location.objects.get(id=weather.location_id)
+        print location.city_name
+        print location.state_name
+        print location.zip
+        print location.lat
+        print location.lng
     template = loader.get_template('index.html')
     return HttpResponse(template.render(context, request))
