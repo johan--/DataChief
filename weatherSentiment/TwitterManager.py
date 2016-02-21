@@ -2,10 +2,9 @@ from alchemyapi import AlchemyAPI
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy import StreamListener
-import time, urllib2, json
+import time, datetime
 import pandas as pd
 from models import Tweet
-
 
 class TwitterManager(StreamListener):
     def on_data(self, data):
@@ -13,7 +12,8 @@ class TwitterManager(StreamListener):
             tweet = data.split(',"text":')[1].split('","source')[0]
             print data
             print tweet
-            Sentiment = TwitterManager.sentiment_analysis(tweet)
+            sentiment = TwitterManager.sentiment_analysis(tweet)
+            TwitterManager.save_data_to_database(data, tweet, sentiment)
             time.sleep(5)
             return True
         except BaseException, e:
@@ -25,17 +25,26 @@ class TwitterManager(StreamListener):
 
     @staticmethod
     def start_stream(locations):
-        c_key = 'UM2gbjeLUmEdDLNXYC7zoJiJo'
-        c_secret = 'u1AcVym5bUBfvwKnqnvUbdYO5R9JGwH5XX39pLztM02nBToQnO'
-        a_token = '4116102794-mF42wRq0rduIxNmFJEH9BtDLtrjIVFDlJArpT2U'
-        a_secret = 'KG1nzAWotPLASC7pwp4rbcswUkEElMjoFYBXeKD21N65C'
-        auth = OAuthHandler(c_key, c_secret)
-        auth.set_access_token(a_token, a_secret)
+        ckey = 'CM5GrRbDPL8IYdmYaYR2xmaDj'
+        csecret = 'bBTb6vSLFKMjE4SSBMjfVEqgyc3DDvwt6DtAK0BITOiUy7V76Y'
+        atoken = '2587929073-sF7e5rjf0kkjuSc2ULMzeMQg6GS6V1fY95ccebF'
+        asecret = 'EVUypMV5dZKYn7Ro2hD9DHDufAZFVf698qzUbqNYJDIQX'
+        auth = OAuthHandler(ckey, csecret)
+        auth.set_access_token(atoken, asecret)
         twitter_stream = Stream(auth, TwitterManager())
-        twitter_stream.firehose()
+        twitter_stream.filter(track =["car"],locations=[-122.75,36.8,-121.75,37.8])
 
+    @staticmethod
     def sentiment_analysis(text):
         alchemy_api = AlchemyAPI()
         response = alchemy_api.sentiment("text", text)
-        # print int(response["docSentiment"]['score'])
+        try:
+            float(response["docSentiment"]['score'])
+            return float(response["docSentiment"]['score'])
+        except ValueError:
+            return None
+
+    def save_data_to_database(twitter_data, tweet, sentiment):
+        # tweet = Tweet(message=tweet, sentiment=sentiment, datetime=datetime.datetime.now())
+        # tweet.save()
         return 1
