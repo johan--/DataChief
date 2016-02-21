@@ -31,7 +31,7 @@ class WeatherManager:
                 temperature = parsed_json['current_observation']['temp_f']
                 try:
                     int(parsed_json['current_observation']['observation_epoch'])
-                    datetime = time.strftime('%Y-%m-%d %H:%M:%S',time.gmtime(int(parsed_json['current_observation']['observation_epoch'])/1000))
+                    datetime = time.strftime('%Y-%m-%d %H:%M:%S',time.gmtime(int(parsed_json['current_observation']['observation_epoch'])))
                 except ValueError:
                     print 'Not Integer value'
                 print wind, precipitation, temperature, weather, datetime
