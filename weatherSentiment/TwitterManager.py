@@ -32,7 +32,7 @@ class TwitterManager(StreamListener):
         auth = OAuthHandler(ckey, csecret)
         auth.set_access_token(atoken, asecret)
         twitter_stream = Stream(auth, TwitterManager())
-        twitter_stream.filter(track =["car"],locations=[-122.75,36.8,-121.75,37.8])
+        twitter_stream.filter(track =["weather"],locations=[-122.75,36.8,-121.75,37.8])
 
     @staticmethod
     def sentiment_analysis(text):
