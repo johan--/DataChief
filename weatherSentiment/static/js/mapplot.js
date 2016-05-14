@@ -1,7 +1,9 @@
+
 var map, heatmap;
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
+window.onload  = function initMap() {
+    window.alert(5);
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 13,
     center: {lat: 37.775, lng: -122.434},
     mapTypeId: google.maps.MapTypeId.SATELLITE
@@ -11,6 +13,7 @@ function initMap() {
     data: getPoints(),
     map: map
   });
+    heatmap.setMap(null);
 }
 
 function toggleHeatmap() {

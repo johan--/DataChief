@@ -2,6 +2,7 @@
 
 # Infrastructure
 Django > 1.9
+requests
 
 #Support Libs
 tweepy == 3.5.0
