@@ -1,174 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <title>Weather Vibe</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<head>
+  <meta property="og:title" content="">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:description" content="">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="favicon.ico">
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0 ! important;
-        }
-
-        #map-canvas{
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            padding-top: 0px;
-            font-size: 16px;
-            font-family: "Open Sans",serif;
-        }
-
-        h1 {
-            font-family: "Abel", Arial, sans-serif;
-            font-weight: 400;
-            font-size: 40px;
-        }
-        .navbar {
-            margin-bottom:0 !important;
-        }
-
-        .jumbotron {
-        background-image: url("../static/img/rain2.jpg");
-        background-size: cover;
-        margin-bottom:0 !important;
-        text-center;
-        }
+  <!-- Styles -->
+  <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../static/css/animate.css">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/main.css">
+  <link rel="shortcut icon" href="favicon.ico">
 
-    </style>
-
-
-    <title>Weather Vibe</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../static/css/logo-nav.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600' rel='stylesheet'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  <script src="../static/js/modernizr-2.7.1.js"></script>
 
 </head>
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Weather Vibe</a>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="logo" href="index.html"><img src="../static/img/logo.png" alt="Logo"></a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#be-the-first" class="scroll" style="color:ffee00;"!>About</a></li>
+            <li><a href="https://twitter.com/?lang=en" target="_blank">Add Your Vibe</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Cities</a></li>
-            <li><a href="#">Weather</a></li>
-            <li><a href="#">Refresh Plot</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-<div class="jumbotron">
-  <div class="container">
-        <div class="row-fluid text-center" style="margin: 0px">
-            <div class="col-md-6 col-md-offset-3" >
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="index.html"><img src="../static/img/logo.png" alt="Logo"></a>
+          </div>
 
-                <h1 class="margin-base-vertical text-center">It's a beautiful day!</h1>
+        <div class "row">
 
-                <p class="text-center">
-                    Or maybe not so much...
-                </p>
-                <p>
-                    Regardless, let's discover how the weather outside affects us inside.
-                </p>
+        <div class="row header-info">
+          <div class="col-sm-10 col-sm-offset-1 text-center">
+            <img class="wow fadeIn" src="../static/img/triangle.png">
+            <h1 class="wow fadeIn" >It's a beautiful day!</h1>
+            <br />
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">Or maybe not so much... <br>
 
-                <p>
-                    Press plot to see what people are saying (and how they're saying it!) based on the weather around them.
-                </p>
+            Regardless, let's discover how the weather outside affects us inside.<br><br><br>
 
-                  <button type="button" class="btn-success btn-primary btn-lg btn-block" onclick="toggleHeatmap()">Plot Weather</button>
-                    </span>
-                </form>
+            Press plot to see what people are saying (and how they're saying it!)
+            <br>based on the weather around them.</p>
+            <br />
 
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                <div class="row">
+                  <div class="col-xs-6 text-right wow fadeInUp" data-wow-delay="1s">
+                    <a href="#be-the-first" class="btn btn-secondary btn-lg scroll">Learn More</a>
+                  </div>
+                  <div class="col-xs-6 text-left wow fadeInUp" data-wow-delay="1.4s">
+                    <a href="#invite" class="btn btn-primary btn-lg scroll">Plot Weather</a>
+                  </div>
+                </div><!--End Button Row-->
+              </div>
             </div>
+
+          </div>
         </div>
-  </div>
-</div>
+      </div>
+    </header>
+
+    <div class="mouse-icon hidden-xs">
+				<div class="scroll"></div>
+			</div>
+
+    <section id="main-info" class="pad-xl">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center margin-30 wow fadeIn" data-wow-delay="0.6s">
+            <h2>Let's Get Emotional</h2><br>
+            <p class="lead">"Sometimes I wish that I was the weather, you'd bring me up in conversation forever. And when it rained, I'd be the talk of the day." <br><br><i>-John Mayer</i></p>
+          </div>
+        </div>
+
+        <div class="iphone wow fadeInUp" data-wow-delay="1s">
+          <img src="../static/img/weather.png">
+        </div>
 
 
 
-<div class="google-map-canvas" id="map-canvas" style="height:100%; width:100%;" ></div>
+
+    </section>
+
+    <section id="be-the-first" class="pad-xl">
+      <div class="container">
+         <div class= "row">
+               <div class="col-sm-8 col-sm-offset-2 text-center margin-10 wow fadeIn" data-wow-delay="0.2s">
+                  <h2>About This Site</h2><br>
+                </div>
+          </div>
+
+         <div class="row">
+          <div class="col-sm-4 wow fadeIn" data-wow-delay="0.4s">
+
+            <hr class="line gray">
+            <h3>Twitter Data Collection</h3>
+            <p>Using Twilio, a powerful Twitter API, we are able to sample large amounts of tweets containing the weather keyword at random, and save them by their corresponding location.</p>
+          </div>
+          <div class="col-sm-4 wow fadeIn" data-wow-delay="0.8s">
+            <hr  class="line blue">
+            <h3>Google Maps API</h3>
+            <p>The Google Maps visualizations are generated through use of the Heat map Data layer, which enables us to translate sentiment data to a color coated point depending on sentiment score.</p>
+          </div>
+          <div class="col-sm-4 wow fadeIn" data-wow-delay="1.2s">
+            <hr  class="line white">
+            <h3>Django Backend</h3>
+            <p>Using Django's back end technologies and SQLAlchemy, we run queries on real-time data based on various locations. This makes handling data easy, and tracking changes over time even easier.</p>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
 
 
 
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/main.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5A4CFVMZ5m7OOQ5C4lEJXctLoTS6ON3o&libraries=visualization"async defer></script>
 
-<script src = "../static/js/mapplot.js">
-</script>
-
-<!-- jQuery -->
-<script src="../static/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="../static/js/bootstrap.min.js"></script>
-
-</body>
-
+    </body>
 </html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0 ! important;
+        }
+
+        #map-canvas{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            padding-top: 0px;
+            font-size: 16px;
+            font-family: "Open Sans",serif;
+        }
+
+        h1 {
+            font-family: "Abel", Arial, sans-serif;
+            font-weight: 400;
+            font-size: 40px;
+        }
+        .navbar {
+            margin-bottom:0 !important;
+        }
+
+        .jumbotron {
+        background-image: url("../static/img/rain2.jpg");
+        background-size: cover;
+        margin-bottom:0 !important;
+        text-center;
+        }
+
+
+
+    </style>
+
+
+    <title>Weather Vibe</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/css/logo-nav.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Abel|Open+Sans:400,600' rel='stylesheet'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Weather Vibe</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Cities</a></li>
+            <li><a href="#">Weather</a></li>
+            <li><a href="#">Refresh Plot</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div class="jumbotron">
+  <div class="container">
+        <div class="row-fluid text-center" style="margin: 0px">
+            <div class="col-md-6 col-md-offset-3" >
+
+                <h1 class="margin-base-vertical text-center">It's a beautiful day!</h1>
+
+                <p class="text-center">
+                    Or maybe not so much...
+                </p>
+                <p>
+                    Regardless, let's discover how the weather outside affects us inside.
+                </p>
+
+                <p>
+                    Press plot to see what people are saying (and how they're saying it!) based on the weather around them.
+                </p>
+
+                  <button type="button" class="btn-success btn-primary btn-lg btn-block" onclick="toggleHeatmap()">Plot Weather</button>
+                    </span>
+                </form>
+
+            </div>
+        </div>
+  </div>
+</div>
+
+
+
+<div class="google-map-canvas" id="map-canvas" style="height:100%; width:100%;" ></div>
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5A4CFVMZ5m7OOQ5C4lEJXctLoTS6ON3o&libraries=visualization"async defer></script>
+
+<script src = "../static/js/mapplot.js">
+</script>
+
+<!-- jQuery -->
+<script src="../static/js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../static/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
